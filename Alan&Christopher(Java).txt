@@ -1,0 +1,54 @@
+//Alan & Christopher
+
+
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+class Main
+{
+    
+    static void alan(String[] str)
+    {
+     Stack stack = new Stack();
+     
+    for(int i=0;i<str.length;i++)
+    {
+        
+        if(str[i].equals("#"))   
+        {
+            if(stack.size()==0)
+            {
+                continue;
+            }
+            
+            else
+            {
+            stack.pop();
+            }
+         
+        }else
+        {
+            stack.push(str[i]);
+            //System.out.println("push");
+        }
+    }
+   String cnt="";
+       Iterator value = stack.iterator();
+       while(value.hasNext())
+       {
+          cnt+=value.next();
+       }
+   System.out.println(cnt);
+    }
+    
+    public static void main(String[] args)throws NumberFormatException, IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N=Integer.parseInt(br.readLine().trim());
+        for(int i=0;i<N;i++)
+        {
+        String[] str = br.readLine().split("");
+        alan(str); 
+        }
+    }
+}

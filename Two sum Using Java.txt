@@ -1,0 +1,64 @@
+// Two Sum (Using Java)
+
+//Enter code here
+
+import java.util.*;
+
+public class Main{
+    
+    public static void twoS(int N,int B,int[] arr){
+        
+        int l =0;
+        int r = N-1;
+        int i =0;
+        int j=0;
+        int cnt =0 ;
+        while(l<r)
+        
+        {
+          int  add = arr[r]+arr[l];
+            if(add==B){
+                i=r;
+                j=l;
+                cnt=1;
+                break;
+            }
+            else if(add<B)
+            {
+                l++;
+            }
+            else if(add>B)
+            {
+                r--;
+            }
+        }
+        
+        if(cnt==1){
+            System.out.print(j+" "+i);
+            System.out.println();
+        }
+        
+        else{
+            System.out.print(-1+" "+-1);
+            System.out.println();
+        }
+    }
+    
+	public static void main(String[] args){
+	    
+	    Scanner sc = new Scanner(System.in);
+	    
+	    int tc = sc.nextInt();
+	    sc.nextLine();
+	    
+	    for(int i=0;i<tc;i++){
+	        
+	        int[] a = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+	        int N = a[0];
+	        int B = a[1];
+	        int[] arr = Arrays.stream(sc.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+	        
+	        Main.twoS(N,B,arr);
+	    }
+	}
+}

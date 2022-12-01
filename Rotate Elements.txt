@@ -1,0 +1,72 @@
+//Rotate Elements
+
+function runProgram(input) {
+    input = input.trim().split('\n'); 
+    n = Number(input[0].trim())
+
+    matrix = [];
+    for (var i = 1; i <= n; i++){
+        matrix.push(input[i].trim().split(" "));
+    }
+    top = 0;
+    left = 0;
+    bottom = n-1;
+    right = n-1;
+    
+
+  
+    
+    for (var j=0; j<Math.floor(n/2); j++) {
+      pre = matrix[top+1][left];
+        for (k=left; k<=right; k++){
+            temp = matrix[top][k]
+            matrix[top][k] = pre;
+            pre = temp;
+      } 
+      top++;
+      for (k=top; k<=bottom; k++){
+          temp = matrix[k][right]
+          matrix[k][right] = pre;
+          pre = temp;
+      } 
+      right--;
+      for (k=right; k>=left; k--){
+          temp = matrix[bottom][k]
+          matrix[bottom][k] = pre;
+          pre = temp;
+      }
+      bottom--;
+      for (k=bottom; k>=top; k--){
+        temp = matrix[k][left]
+        matrix[k][left] = pre
+        pre = temp
+      } left++  
+         
+    } 
+
+    for (b=0; b<matrix.length; b++) {
+      console.log(matrix[b].join(' '));
+    }
+
+}
+  
+if (process.env.USERNAME ) {
+    runProgram(``);
+  } else {
+    process.stdin.resume();
+    process.stdin.setEncoding("ascii");
+    let read = "";
+    process.stdin.on("data", function (input) {
+      read += input;
+    });
+    process.stdin.on("end", function () {
+      read = read.replace(/\n$/, "");
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+    });
+    process.on("SIGINT", function () {
+      read = read.replace(/\n$/, "");
+      runProgram(read);
+      process.exit(0);
+    });
+}

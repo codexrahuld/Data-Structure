@@ -1,0 +1,48 @@
+//Check for symmetry(Using Java)
+
+function checkForSymmetry(n, matrix) {
+    //write code here
+    // console n,matrix and check the input response
+    var left=0;
+    var right=n-1;
+    var top=0;
+    var bottom=n-1;
+    var count=true;
+    var count1=true;
+  
+    while(top<bottom){
+        for(var i=0;i<=n-1;i++){
+        if(matrix[top][i]!==matrix[bottom][i]){
+            count = false;
+        }
+        }
+        if(count===false)
+        {
+            break;
+        }
+        top++;
+        bottom--;
+    }
+    while(left<right){
+        for(var k=0;k<=n-1;k++){
+        if(matrix[k][left]!==matrix[k][right]){
+           count1 = false;
+        }
+        }
+        if(count1===false){
+            break;
+        }
+        left++;
+        right--;
+    }
+    if(count && count1){
+        console.log("BOTH");
+    }else if(count){
+        console.log("HORIZONTAL");
+    }else if(count1){
+        console.log("VERTICAL");
+    }
+    else{
+        console.log("NO");
+    }
+}
